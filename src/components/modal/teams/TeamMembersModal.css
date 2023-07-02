@@ -1,0 +1,23 @@
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #e3e0e0;
+    border-bottom: 0px solid #e3e0e0;
+    padding: 0px 0;
+    height: 60px;
+  }
+  
+  .user-icon {
+    margin-right: 10px;
+  }
+  
+  .username {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .checkbox {
+    margin-left: 10px;
+    width: 100px;
+  }

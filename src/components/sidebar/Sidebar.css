@@ -1,0 +1,33 @@
+.main-sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: black;
+  position: fixed;
+  color: white;
+  flex-direction: column;
+  padding: 20px 18px 20px 50px;
+}
+.main-sidebar .logo {
+  width: 140px;
+}
+.sidebar ul {
+  flex-direction: column;
+  display: flex;
+  gap: 31px;
+  margin-top: 15px;
+}
+
+.sidebar li {
+  color: white;
+  display: flex;
+  gap: 10px;
+  font-size: 0.875rem;
+  align-items: center;
+  height: 40px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.sidebar li.active{
+  background: #464646;
+  border-radius: 5px;
+}

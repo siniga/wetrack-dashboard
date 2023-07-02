@@ -1,0 +1,108 @@
+.menu-bar {
+    background: white;
+    height: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding-left: 12px;
+    padding-right: 20px;
+  }
+  .menu-bar .view-list{
+    display: flex;
+    gap:15px
+  }
+  .menu-bar .view-list li{
+    cursor: pointer;
+  }
+  .menu-bar .view-list .active{
+    border-bottom: #f60 solid 2px;
+    color: #f60;
+    cursor: pointer;
+  }
+  .page-header{
+    color: #666
+  }
+  .table-wrapper{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+  }
+  tr{
+    height: 100px;
+  }
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f9f5f5;
+    color: #525252;
+  }
+  .table-row{
+    height: 40px;
+  }
+  .status-pill {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .pagination {
+    /* display: flex; */
+    /* justify-content: center; */
+    margin-top: 20px;
+    width: 70%;
+  }
+  
+  .pagination button {
+    margin: 5px 5px;
+    padding: 5px 10px;
+    /* border: 1px solid #ccc; */
+    background-color: black;
+    cursor: pointer;
+  }
+  
+  .pagination button.active {
+    font-weight: bold;
+    background-color: #f60;
+  }  
+  
+  .status-pill.pending {
+    background-color: #ffcc00;
+    color: #333;
+  }
+  
+  .status-pill.completed {
+    background-color: #00cc66;
+    color: #fff;
+  }
+  
+  .status-pill.cancelled {
+    background-color: #ff3333;
+    color: #fff;
+  }
+  

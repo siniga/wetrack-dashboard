@@ -1,0 +1,44 @@
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    padding: 12px 35px 12px 35px;
+    position: sticky;
+    z-index: 999;
+    background-color: white;
+  }
+  .main-header .campaign-wrapper{
+    display: flex;
+    align-items: center;
+    gap:10px
+  }
+  .main-header .campaign-wrapper .pills.active{
+    background-color: #ff6600;
+    color: white;
+  }
+  .main-header ul.top-menu-items {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap:25px
+  }
+  .main-header ul.top-menu-items li .h-icon-wrapper {
+    font-size: 18px;
+    background-color: #fdf2eb;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .main-header .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  .szh-menu-button{
+    background: none;
+  }

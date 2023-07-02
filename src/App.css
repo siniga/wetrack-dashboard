@@ -1,18 +1,109 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  min-height: 100%;
+}
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+ul {
+  padding: 0 !important;
+}
+li {
+  list-style-type: none;
+}
+.vertical-ul {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+input,
+textarea,
+select {
+  outline: none;
+}
+.main-container {
+  flex: 6.5;
+  flex-direction: column;
+  min-height: 100%;
+  display: flex;
+  justify-items: center;
+  background: #eaeaea;
+  padding-bottom: 100px;
+}
+.sidebar {
+  background-color: #f2f2f2;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: 100vh;
+  background-color: black;
+  position: fixed;
+  color: white;
+}
+.error {
+  color: red;
+  font-size: 12px;
+}
+.error-right {
+  position: relative;
+  top: -10px;
+  text-align: right;
+}
+.modal {
+  position: fixed; 
+  z-index: 9999999999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
+/* 
+.page {
+  padding: 0 30px 0 30px;
+  width: 100%;
 
+  background-color: #f8f3f1;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -27,12 +118,70 @@
 .App-link {
   color: #61dafb;
 }
+.sign-up {
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
+} */
+.szh-menu-button {
+  border: none;
+  border-radius: 7px;
+  padding: 8px 15px 8px 15px;
+  font-size: 14px;
 }
+.pills {
+  color: black;
+  background: #ccc;
+  padding: 4px 14px 5px 12px;
+  font-size: 12px;
+  border-radius: 13px;
+  cursor: pointer;
+  text-align: center;
+  /* line-height: 3px; */
+}
+.pending {
+  background-color: grey;
+  color: #c2e9d9;
+}
+.completed {
+  background-color: #09b66d;
+  color: #c2e9d9;
+}
+.processing {
+  background-color: #ffaf38;
+  color: #fff5e7;
+}
+.cancelled {
+  background-color: #ff3d57;
+  color: #fff1dd;
+}
+.white-btn {
+  background-color: white;
+  color: #f60;
+  padding: 2px 20px 2px 20px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #f60;
+}
+.primary-btn {
+  background-color: #f60;
+  color: white;
+  padding: 2px 20px 2px 20px;
+  border-radius: 10px;
+}
+/* .submit-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+  width: 100%;
+  height: 30px;
+  line-height: 3px;
+  background: #ff6600;
+  color: white;
+  border: none;
+} */

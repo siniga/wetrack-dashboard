@@ -1,0 +1,51 @@
+.view-sale-container{
+    margin-top: 70px;
+}
+.invoice-wrapper{
+    background-color: white;
+    /* padding: 40px; */
+    padding: 20px 10px 40px;
+}
+.order-header{
+    display: flex;
+    flex-direction: column;
+    border-bottom: #e5e1e1 solid thin;
+    padding: 30px;
+}
+.order-header-btns{
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+}
+.header-action-btns{
+    display: flex;
+    gap:10px;
+}
+.order-header-info{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.back-btn-wrapper{
+    display: flex;
+    font-weight: 600;
+    gap: 5px;
+    cursor: pointer;
+}
+.order-status{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.billing-info-wrapper{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    border-bottom: #e5e1e1 solid thin;
+    padding: 30px;
+}
+.billing-info-wrapper p span:first-child{
+    font-weight: 600;
+}

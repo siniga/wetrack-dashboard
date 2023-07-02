@@ -1,0 +1,31 @@
+.dashboard-page{
+    padding-bottom:50px;
+    position: relative;
+}
+.stats-pannel{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:20px
+}
+.dash-card{
+    width:23%;
+    height: 300px;
+    position: relative;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.05);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.05);
+    -o-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.05);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.05);
+    background: white;
+    margin-bottom: 26px;
+}
+.dash-card.lg{
+    width: 49%;
+    height: 350px;
+}
+.dash-card.md-30{
+    width: 29%;
+}
+.dash-card.lg-70{
+    width: 69%;
+}

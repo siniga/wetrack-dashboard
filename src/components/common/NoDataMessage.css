@@ -1,0 +1,12 @@
+.message-wrapper{
+    position: absolute;
+    top: 61px;
+    height: 80%;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    z-index: 999999999;
+}

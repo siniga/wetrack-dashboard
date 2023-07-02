@@ -1,0 +1,24 @@
+.product-container .card{
+   background-color: white;
+}
+.categories-wrapper{
+    width: 283px;
+    padding: 20px 10px;
+    background-color: white;
+    padding: 20px;
+    
+}
+.categories-wrapper ul{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.categories-wrapper ul li{
+    display: flex;
+    grid-gap: 15px;
+    gap: 15px;
+    border-top: 1px #e8e7e7 solid;
+    padding: 20px 0 9px 0;
+    align-items: center;
+}

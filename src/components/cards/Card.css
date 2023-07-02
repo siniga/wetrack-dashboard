@@ -1,0 +1,16 @@
+.card-wrapper{
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
+    -o-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    padding: 20px 10px 40px;
+    position: relative;
+}
+.card-header{
+    display: flex;
+}
+.card-header-inline{
+    display:flex;
+    justify-content: space-between; 
+}

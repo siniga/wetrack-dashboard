@@ -1,0 +1,108 @@
+.login-page {
+    display: flex;
+    height: 600px;
+  }
+  
+  .left-side {
+    background-color: black;
+    flex: 7;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+  }
+  
+  .right-side {
+    background-color: #fff;
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  
+  .welcome-header {
+    margin-left: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-header h2 {
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  
+  .subtext {
+    font-size: 20px;
+    color: #888;
+  }
+  .login-form {
+    width: 100%;
+    height: 70%;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: white;
+    text-align: left;
+  }
+  .login-form .form-label {
+    color: #888;
+  }
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 13px;
+  }
+  .login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f60;
+    color: white;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    display: flex;
+      justify-content: center;
+  }
+  .login-form button:hover {
+    background-color: #f60;
+  }
+  .register-text {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .register-text a {
+    color: #f60;
+    text-decoration: none;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 960px) {
+    .left-side {
+      flex: 3;
+    }
+  }
+  @media (max-width: 768px) {
+    .login-page {
+      flex-direction: column;
+    }
+  
+    .left-side {
+      display: none;
+    }
+  
+    .right-side {
+      flex: initial;
+      height: 100vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .login-form {
+      max-width: 100%;
+    }
+  }
+  

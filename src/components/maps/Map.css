@@ -1,0 +1,14 @@
+.marker {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+  }
+  .mapboxgl-canvas {
+    pointer-events: auto;
+  }

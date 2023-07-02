@@ -1,0 +1,11 @@
+.loader-main{
+    height: 80%;
+    position: absolute;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    z-index: 999999999;
+}

@@ -1,0 +1,63 @@
+.lg-card.left-sidebar{
+    position: fixed !important;
+    height: 500px;
+    flex: 1;
+    padding: 10px;
+    position: relative;
+    background: white;
+    border-radius: 10px;
+}
+
+.inner-card-wrapper-4.main-content-center{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+.lg-card.user-details-wrapper, .lg-card.top-stat-wrapper{
+    height: 90px;
+    padding: 10px;
+    position: relative;
+    background: white;
+    border-radius: 10px;
+}
+.lg-card.user-details-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.lg-card.top-stat-wrapper{
+    flex: 5;
+}
+.user-wrapper{
+    display: flex;
+    gap:10px
+}
+.user-img-wrapper{
+    background: rgb(228, 226, 226);
+    border: #ccc solid thin;
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-personal-details{
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    /* align-items: center; */
+}
+.lg-card.time-metric-wrapper{
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    display:flex;
+    justify-content: space-between;
+}
+

@@ -1,0 +1,16 @@
+.vertical-li{
+    display: flex;
+    grid-gap: 15px;
+    gap: 15px;
+    padding: 20px 0 9px 0;
+    align-items: center;
+    cursor: pointer;
+    padding: 13px;
+}
+.vertical-li .children{
+    display: flex;
+    grid-gap: 15px;
+    gap: 15px;
+    align-items: center;
+    font-size: 13px;
+}
