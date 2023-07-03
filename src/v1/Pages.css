@@ -11,13 +11,20 @@
   }
   .menu-bar .view-list{
     display: flex;
-    gap:15px
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    gap: 5px;
   }
   .menu-bar .view-list li{
     cursor: pointer;
+    border: #cccccc solid thin;
+    border: "solid thin #ccc";
+    border-radius: 4px;
+    padding: 0 10px 0px 10px;
   }
   .menu-bar .view-list .active{
-    border-bottom: #f60 solid 2px;
+    /* border-bottom: #f60 solid 2px; */
     color: #f60;
     cursor: pointer;
   }
@@ -105,4 +112,16 @@
     background-color: #ff3333;
     color: #fff;
   }
-  
+  .filter-list-btns{
+    cursor: pointer;
+    border: #cccccc solid thin;
+    border: "solid thin #ccc";
+    border-radius: 4px;
+    padding: 0 10px 0px 10px;
+  }
+  .region-list{
+    height: 40px;
+    display: flex;
+    padding-left: 10px;
+    /* justify-content: center; */
+  }

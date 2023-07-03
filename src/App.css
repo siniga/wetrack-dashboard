@@ -22,6 +22,15 @@ ul {
 li {
   list-style-type: none;
 }
+li.active{
+  color: #f60;
+  cursor: pointer;
+}
+li.active-with-bg{
+  background-color: rgb(250, 218, 192);
+  color: black;
+  border-radius: 10px;
+}
 .vertical-ul {
   margin-top: 20px;
   display: flex;
@@ -185,3 +194,7 @@ select {
   color: white;
   border: none;
 } */
+
+.routes-wrapper{
+  padding: 10px 60px 0px 60px; 
+}

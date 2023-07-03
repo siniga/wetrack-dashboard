@@ -6,7 +6,6 @@ import "./Map.css";
 
 const Map = ({ markers, center, zoom }) => {
   const [map, setMap] = useState(null);
-
   const mapContainer = useRef(null);
 
   useEffect(() => {
@@ -72,34 +71,8 @@ const Map = ({ markers, center, zoom }) => {
       const el = document.createElement("div");
       el.className = "marker";
       el.textContent = marker.title?.substr(0,1);
-
-      switch (marker.id % 7) {
-        case 1:
-          el.style.backgroundColor = "red";
-          break;
-        case 2:
-          el.style.backgroundColor = "blue";
-          break;
-        case 3:
-          el.style.backgroundColor = "#f60";
-          break;
-        case 4:
-          el.style.backgroundColor = "grey";
-          break;
-        case 5:
-          el.style.backgroundColor = "orange";
-          break;
-        case 6:
-          el.style.backgroundColor = "purple";
-          break;
-        case 0:
-          el.style.backgroundColor = "#576cd3";
-          break;
-        default:
-          el.style.backgroundColor = "#000";
-      }
-
-      // ["#61c3fe", "#f60","#576cd3","#9c27b0","#ccc"]
+      el.style.backgroundColor = marker?.color;
+      
       new mapboxgl.Marker(el).setLngLat(marker.lngLat).addTo(map);
     });
   };
@@ -137,7 +110,7 @@ const Map = ({ markers, center, zoom }) => {
     });
   };
 
-  return <div ref={mapContainer} style={{ height: "550px", width: "100%" }} />;
+  return <div ref={mapContainer} style={{ height: "650px", width: "100%" }} />;
 };
 
 export default Map;

@@ -37,7 +37,9 @@ function Sales() {
   });
 
   useEffect(() => {
+
     setIsPageLoading(true);
+    
     const fetchData = async () => {
       const salesData = await fetchSales(axiosInstance, loggedUser.business_id);
       if (salesData) {
@@ -111,11 +113,11 @@ function Sales() {
             {currentItems?.map((item, index) => {
               return (
                 <tr>
-                  <td>{item.device_time}</td>
-                  <td>#{item.order_no}</td>
-                  <td>{item.customer.name}</td>
-                  <td>{item.customer.phone}</td>
-                  <td>{item.customer.location}</td>
+                  <td>{item?.device_time}</td>
+                  <td>#{item?.order_no}</td>
+                  <td>{item?.customers.name}</td>
+                  <td>{item?.customers.phone}</td>
+                  <td>{item?.customers.location}</td>
                   <td>
                     {item.status == 1 && (
                       <span class="status-pill pending">order</span>

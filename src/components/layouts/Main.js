@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, {useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "../../v1/auth/Login";
@@ -16,9 +16,11 @@ import CreateProduct from "../../v1/products/CreateProduct";
 import NavBar from "./NavBar";
 import Sidebar from "./Sidebar";
 import Agents from "../../v1/agents/Agents";
+import Map from "../../v1/maps/Map";
 
 function Main({ children }) {
   const { loginState, dispatchLoginState } = useContext(AuthContext);
+  const [routeWrapperStyles, setRouteWrapperStyles] = useState({})
 
   const token = localStorage.getItem("token");
   const loggedUser = JSON.parse(localStorage.getItem("user"));
@@ -50,18 +52,19 @@ function Main({ children }) {
     <div className="App">
       {loginState?.isLoggedIn && (
         <div style={{ flex: 1 }}>
-          <Sidebar />
+          <Sidebar setRouteWrapperStyles={setRouteWrapperStyles}/>
         </div>
       )}
       <div className="main-container">
         {loginState?.isLoggedIn && <NavBar />}
-        <div style={{ padding: "10px 60px 0px 60px" }}>
+        <div className="routes-wrapper" style={routeWrapperStyles}>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/sales" element={<Sales />} />
             <Route path="/agents" element={<Agents />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/calls" element={<CallsMade />} />
+            <Route path="/map" element={<Map />} />
             <Route path="/products" element={<Products />} />
             <Route path="/customers" element={<Customer />} />
             <Route path="/users" element={<User />} />

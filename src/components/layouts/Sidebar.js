@@ -19,13 +19,20 @@ import { Link } from "react-router-dom";
 import Logo from "../../img/logo.png";
 import { AuthContext } from "../../context/authContext";
 
-function Sidebar() {
+function Sidebar({setRouteWrapperStyles}) {
   const { isLoggedIn } = useContext(AuthContext);
   const [activeLink, setActiveLink] = useState("/dashboard");
 
   useEffect(()=>{
     let lastClickedLink = localStorage.getItem('last_link_clicked');
     setActiveLink(lastClickedLink)
+
+    
+    if(lastClickedLink=== "/map"){
+      setRouteWrapperStyles({ padding:"0 0 0 20px"})
+    }else{
+      setRouteWrapperStyles({ })
+    }
   },[])
 
   if (isLoggedIn) {
@@ -35,6 +42,12 @@ function Sidebar() {
   const handleLinkClick = (link) => {
     setActiveLink(link);
     localStorage.setItem("last_link_clicked", link)
+
+    if(link === "/map"){
+      setRouteWrapperStyles({ padding:"0 0 0 20px"})
+    }else{
+      setRouteWrapperStyles({})
+    }
   };
 
   return (
@@ -50,8 +63,8 @@ function Sidebar() {
             Dashboard
           </Link>
         </li>
-        <li className={activeLink === "/calls" ? "active" : ""}>
-          <Link to="/calls" onClick={() => handleLinkClick("/calls")}>
+        <li className={activeLink === "/map" ? "active" : ""}>
+          <Link to="/map" onClick={() => handleLinkClick("/map")}>
             <FaMapMarkerAlt />
             Maps
           </Link>

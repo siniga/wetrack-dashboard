@@ -16,6 +16,7 @@ import BubbleChart from "../../charts/BubleChart";
 import PageLoader from "../../components/common/PageLoader";
 import { exportOrderData } from "../../components/api/Exports";
 import Loader from "../../img/spinner_loader.gif";
+import { FaFilter } from "react-icons/fa";
 
 export const options = {
   chart: {
@@ -32,6 +33,8 @@ function Dashboard() {
   const [reports, setReports] = useState(null);
   const [isPageLoading, setIsPageLoading] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
+  const [newDayFilter, setNewDayFilter] = useState("today");
+  const [isVisible, setIsVisible] = useState(false);
 
   const BASE_URL = BaseUrl("/");
   const token = localStorage.getItem("token");
@@ -44,6 +47,38 @@ function Dashboard() {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY || window.pageYOffset;
+      const hideScrollThreshold = 200; // Adjust this value to change the scroll threshold for hiding the div
+      const showScrollThreshold = 500; // Adjust this value to change the scroll threshold for showing the div
+      // && scrollY < showScrollThreshold
+      if (scrollY > hideScrollThreshold) {
+        // alert("imefika hapa")
+        setIsVisible(true);
+      } else {
+        // alert("tunafanyaje sasa ikifika hapa")
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIsPageLoading(true);
+    if (!loggedUser) {
+      return;
+    }
+
+    fetchRepotData("today");
+  }, []);
 
   const handleDownload = async () => {
     setIsExporting(true);
@@ -61,25 +96,23 @@ function Dashboard() {
     }
   };
 
-  useEffect(() => {
-    setIsPageLoading(true);
-    if (!loggedUser) {
-      return;
+  const fetchRepotData = async (filter) => {
+    const response = await fetchReports(
+      axiosInstance,
+      loggedUser.business_id,
+      filter
+    );
+    if (response) {
+      // console.log(response);
+      setIsPageLoading(false);
+      setReports(response);
     }
+  };
 
-    const fetchData = async () => {
-      const response = await fetchReports(
-        axiosInstance,
-        loggedUser.business_id
-      );
-      if (response) {
-        setIsPageLoading(false);
-        setReports(response);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const filterData = async (dayFilter) => {
+    setNewDayFilter(dayFilter);
+    fetchRepotData(dayFilter);
+  };
 
   const mergeRepeatedItems = (data) => {
     // Merge the data for products with the same name
@@ -97,18 +130,78 @@ function Dashboard() {
       return result;
     }, []);
 
-
     return mergedData;
   };
 
   return (
     <div>
+      <div
+        className={isVisible ? "visible" : "hidden"}
+        style={{
+          position: "fixed",
+          background: "white",
+          zIndex: 999,
+          right: 0,
+          height: 200,
+          borderLeft: "#ccc solid thin",
+          borderTop: "#ccc  solid thin",
+          borderBottom: "#ccc  solid thin",
+          padding: 20,
+          borderTopLeftRadius: 10,
+          borderBottomLeftRadius: 10,
+        }}
+      >
+        <ul
+          className="view-list"
+          style={{ display: "flex", flexDirection: "column", gap: 10 }}
+        >
+          <span
+            style={{
+              display: "flex",
+              gap:10,
+              alignItems: "center",
+            }}
+          >
+            <FaFilter /> Filters
+          </span>
+          <li
+            className={
+              newDayFilter == "today"
+                ? "filter-list-btns active"
+                : "filter-list-btns"
+            }
+            onClick={() => filterData("today")}
+          >
+            Today
+          </li>
+          <li
+            className={
+              newDayFilter == "week"
+                ? "filter-list-btns active"
+                : "filter-list-btns"
+            }
+            onClick={() => filterData("week")}
+          >
+            Week
+          </li>
+          <li
+            className={
+              newDayFilter == "month"
+                ? "filter-list-btns active"
+                : "filter-list-btns"
+            }
+            onClick={() => filterData("month")}
+          >
+            Month
+          </li>
+        </ul>
+      </div>
       <div className="menu-bar">
         <h1 className="page-header">/ Dashboard</h1>
         <div>
           <ul className="view-list">
             {!isExporting && (
-              <li className="active" onClick={handleDownload}>
+              <li onClick={handleDownload}>
                 <span> Export</span>
               </li>
             )}
@@ -120,6 +213,35 @@ function Dashboard() {
               </li>
             )}
             <li>Refresh</li>
+          </ul>
+        </div>
+        <div>
+          <ul className="view-list">
+            <FaFilter />
+            <li
+              className={newDayFilter == "today" && "active"}
+              onClick={() => filterData("today")}
+            >
+              Today
+            </li>
+            <li
+              style={{
+                border: "solid thin #ccc",
+                borderRadius: 4,
+                paddingRight: 10,
+                paddingLeft: 10,
+              }}
+              className={newDayFilter == "week" ? "active" : ""}
+              onClick={() => filterData("week")}
+            >
+              Week
+            </li>
+            <li
+              className={newDayFilter == "month" ? "active" : ""}
+              onClick={() => filterData("month")}
+            >
+              Month
+            </li>
           </ul>
         </div>
       </div>
@@ -134,7 +256,7 @@ function Dashboard() {
           <div className="inner-card-wrapper-1">
             <div className="sm-card">
               <div className="card-header">Customer Visits</div>
-              {console.log(reports)}
+              {/* {console.log(reports)} */}
               <div className="card-stat">
                 {reports !== undefined && reports?.customer_visit.this_month}
               </div>
@@ -193,12 +315,12 @@ function Dashboard() {
                 series={[
                   {
                     name: "Visits",
-                    data: reports?.charts.sales_vs_visits.visits.data,
+                    data: reports?.charts.sales_vs_visits.sales.visits,
                   },
 
                   {
                     name: "Sales",
-                    data: reports?.charts.sales_vs_visits.sales.data,
+                    data: reports?.charts.sales_vs_visits.sales.sales,
                   },
                 ]}
               />
@@ -276,10 +398,17 @@ function Dashboard() {
                 {/* <BubbleChart
                   series={reports?.charts?.top_disctricts}
                 /> */}
-                <ColumnChart
-                  categories={reports.sales_trend.categories}
-                  series={mergeRepeatedItems(reports?.sales_trend.data)}
-                />
+                {reports?.sales_trend.data.length > 0 ? (
+                  <ColumnChart
+                    categories={reports?.sales_trend?.categories}
+                    series={mergeRepeatedItems(reports?.sales_trend.data)}
+                  />
+                ) : (
+                  <ColumnChart
+                    categories={reports?.sales_trend?.categories}
+                    series={mergeRepeatedItems(reports?.sales_trend?.data)}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -375,7 +504,6 @@ function Dashboard() {
               >
                 Districts
               </p>
-              {console.log(reports?.charts?.top_disctricts)}
               <div style={{ padding: 20 }}>
                 {/* <BubbleChart
                   series={reports?.charts?.top_disctricts}

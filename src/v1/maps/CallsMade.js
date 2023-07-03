@@ -119,6 +119,21 @@ function CallsMade() {
       Authorization: `Bearer ${token}`,
     },
   });
+  
+
+  useEffect(() => {
+    setIsRegionLoading(true);
+    const fetchRegions = async () => {
+      const response = await fetchRegionData(axiosInstance);
+      if (response) {
+      
+        setIsRegionLoading(false);
+        setRegions(response);
+      }
+    };
+
+    fetchRegions();
+  }, []);
 
   useEffect(() => {
     setIsRegionLoading(true);

@@ -1,5 +1,13 @@
+.map-main-wrapper {
+  position: fixed;
+  width: 85%;
+  background-color: white;
+  padding: 0px 0px 0px;
+  z-index: 9999;
+  top: 0;
+}
 .city-list-container {
-  height: 550px; /* Adjust the height as desired */
+  height: 550px;
   overflow-y: scroll;
   padding: 15px;
 }
@@ -17,4 +25,52 @@
   margin-right: 10px;
   color: #666;
   font-size: 12;
+}
+.map-filter-wrapper,
+.map-filter-items {
+  position: absolute;
+  margin-left: 20px;
+  top: 10px;
+  z-index: 999999999;
+  background-color: white;
+  width: 30%;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.map-filters {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.map-filters li {
+  cursor: pointer;
+  border: #cccccc solid thin;
+  border: "solid thin #ccc";
+  border-radius: 4px;
+  padding: 0 10px 0px 10px;
+}
+.map-filter-items {
+  margin-top: 50px;
+  height: 30px;
+  width: 73%;
+  background: none;
+}
+.map-filter-items ul {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.map-filter-items li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: white;
+  border-radius: 10px;
+  padding: 1px 10px 1px 10px;
 }

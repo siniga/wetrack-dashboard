@@ -4,7 +4,7 @@ export function BaseUrl(endpoint) {
   // return (url = `http://localhost/wetrack/api/public/index.php/api${endpoint}`);
  
 
- return `https://track.rutepro.co.tz/api/public/index.php/api${endpoint}`;
+ return `https://track.routepro.co.tz/api/public/index.php/api${endpoint}`;
 
   
 }

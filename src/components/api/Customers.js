@@ -41,3 +41,14 @@ export const deleteCustomerQuery = async (axiosInstance,queryId) => {
     return null;
   }
 };
+
+export const fetchCustomerTypes = async (axiosInstance) => {
+  try {
+    const response = await axiosInstance.get(`/customers/types`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching customer types queries:', error);
+    return null;
+  }
+};
+

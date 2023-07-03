@@ -21,6 +21,7 @@ function Agents() {
   const [selectedAgent, setSelectedAgent] = useState(null);
   const [agentDetails, setAgentDetails] = useState(null);
   const [newDayFilter, setNewDayFilter] = useState("today");
+  const [filterUser, setFilterUser] = useState(0);
 
   const BASE_URL = BaseUrl("/");
   const token = localStorage.getItem("token");
@@ -50,15 +51,18 @@ function Agents() {
 
   useEffect(() => {
     setIsAgentsLoading(true);
+
     const fetchData = async () => {
       const agents = await fetchUsersByRegions(
         axiosInstance,
         loggedUser.business_id,
         selectedRegion
       );
+
       if (agents) {
         setIsAgentsLoading(false);
         setAgents(agents);
+        setFilterUser(agents[0].user_id);
       }
     };
 
@@ -70,7 +74,6 @@ function Agents() {
   };
 
   const onAgentClicked = async (agent) => {
-    console.log(newDayFilter);
     const response = await fetchUserReports(
       axiosInstance,
       agent.user_id,
@@ -80,6 +83,7 @@ function Agents() {
     if (response) {
       setSelectedAgent(response);
       setAgentDetails(agent);
+      setFilterUser(agent.user_id);
     }
   };
 
@@ -97,7 +101,8 @@ function Agents() {
       return;
     }
 
-    // console.log(agentDetails);
+    setNewDayFilter(dayFilter);
+
     const response = await fetchUserReports(
       axiosInstance,
       agentDetails.user_id,
@@ -107,7 +112,6 @@ function Agents() {
 
     if (response) {
       setSelectedAgent(response);
-      // setNewDayFilter(dayFilter);
     }
   };
 
@@ -118,50 +122,21 @@ function Agents() {
       <div className="menu-bar">
         <h1 className="page-header">/ Agents Stats</h1>
         <div>
-          <ul
-            className="view-list"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontSize: 14,
-              gap: 5,
-            }}
-          >
-            <li>
-              <FaFilter />
-            </li>
+          <ul className="view-list">
+            <FaFilter />
             <li
-              style={{
-                border: "solid thin #ccc",
-                borderRadius: 4,
-                paddingRight: 10,
-                paddingLeft: 10,
-              }}
               className={newDayFilter == "today" && "active"}
               onClick={() => filterData("today")}
             >
               Today
             </li>
             <li
-              style={{
-                border: "solid thin #ccc",
-                borderRadius: 4,
-                paddingRight: 10,
-                paddingLeft: 10,
-              }}
               className={newDayFilter == "week" ? "active" : ""}
               onClick={() => filterData("week")}
             >
               Week
             </li>
             <li
-              style={{
-                border: "solid thin #ccc",
-                borderRadius: 4,
-                paddingRight: 10,
-                paddingLeft: 10,
-              }}
               className={newDayFilter == "month" ? "active" : ""}
               onClick={() => filterData("month")}
             >
@@ -213,6 +188,11 @@ function Agents() {
                         agents.map((agent, index) => {
                           return (
                             <li
+                              className={
+                                agent?.user_id === filterUser
+                                  ? "region-list active-with-bg"
+                                  : "region-list"
+                              }
                               key={index}
                               style={{
                                 display: "flex",
@@ -341,7 +321,7 @@ function Agents() {
                 {calConvertionRate(
                   selectedAgent?.total_num_sales,
                   selectedAgent?.total_visits
-                ) < 40 && (
+                ) <= 40 && (
                   <span
                     style={{
                       color: "white",
@@ -360,7 +340,7 @@ function Agents() {
                 {calConvertionRate(
                   selectedAgent?.total_num_sales,
                   selectedAgent?.total_visits
-                ) > 50 &&
+                ) >= 50 &&
                   calConvertionRate(
                     selectedAgent?.total_num_sales,
                     selectedAgent?.total_visits
